@@ -1,14 +1,16 @@
+import exceptions.MathOperationNotSupportedException;
+
 public enum MathOperation {
 
-    ADD('+'),
-    SUBTRACT('-'),
-    MULTIPLY('*'),
-    DIVIDE('/');
+    ADD("+"),
+    SUBTRACT("-"),
+    MULTIPLY("*"),
+    DIVIDE("/");
 
 
-    public char sign;
+    public String sign;
 
-    MathOperation(char sign) {
+    MathOperation(String sign) {
         this.sign = sign;
     }
 
@@ -28,6 +30,17 @@ public enum MathOperation {
             }
             default -> throw new EnumConstantNotPresentException(MathOperation.class, String.valueOf(this.sign));
         }
+    }
+
+    public static MathOperation getOperationBySign(String operationString) throws MathOperationNotSupportedException {
+        for (MathOperation operation :
+                MathOperation.values()) {
+            if (operation
+                    .sign
+                    .equals(operationString))
+                return operation;
+        }
+        throw new MathOperationNotSupportedException("Математическая операция не поддерживается.");
     }
 
 }
