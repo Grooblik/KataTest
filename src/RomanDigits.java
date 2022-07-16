@@ -20,13 +20,13 @@ public enum RomanDigits implements Digit {
         this.glyph = glyph;
     }
 
-    public static int toArabic(String glyph) throws DigitNotSupportedException {
+    public static Digit toDigit(String glyph) throws DigitNotSupportedException {
         for (RomanDigits digit :
                 RomanDigits.values()) {
             if (glyph.equals(
                     digit.glyph
             ))
-                return digit.arabicValue;
+                return digit;
         }
         throw new DigitNotSupportedException("Число '" + glyph + "' - не поддерживается программой.");
     }
