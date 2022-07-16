@@ -3,7 +3,7 @@ import exceptions.IllegalCommandException;
 import exceptions.MathOperationNotSupportedException;
 
 public class CommandScanner {
-    public static Command parseString(String command) {
+    public static Command parseString(String command) throws IllegalCommandException {
         String[] operands = command.split(" ");
 
         if (operands.length != 3) throw new IllegalCommandException();
