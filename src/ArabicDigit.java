@@ -1,7 +1,7 @@
 import exceptions.DigitNotSupportedException;
 
 public class ArabicDigit implements Digit{
-    private final int value;
+    private int value;
 
     public ArabicDigit(String string) throws DigitNotSupportedException, NumberFormatException {
         this(Integer.parseInt(string));
@@ -17,6 +17,17 @@ public class ArabicDigit implements Digit{
     @Override
     public int toInt() {
         return value;
+    }
+
+    @Override
+    public Digit calculate(Digit b, MathOperation operation) {
+        switch (operation) {
+            case ADD -> this.value += b.toInt();
+            case SUBTRACT -> this.value -= b.toInt();
+            case MULTIPLY -> this.value *= b.toInt();
+            case DIVIDE -> this.value /= b.toInt();
+        }
+        return this;
     }
 
 }
