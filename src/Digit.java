@@ -3,4 +3,6 @@ public interface Digit {
     int MAX_VALUE = 10;
 
     int toInt();
+
+    Digit calculate(Digit b, MathOperation operation);
 }
