@@ -1,17 +1,19 @@
+import exceptions.DigitNotSupportedException;
+
 public class Command {
 
     private final MathOperation mathOperation;
-    private final Digit a;
-    private final Digit b;
+    private final Number a;
+    private final Number b;
 
-    public Command(Digit a, Digit b, MathOperation operation) {
+    public Command(Number a, Number b, MathOperation operation) {
         this.a = a;
         this.b = b;
         this.mathOperation = operation;
     }
 
-    public int calculate() {
-        return mathOperation.calculate(a.toInt(), b.toInt());
+    public Number calculate() throws DigitNotSupportedException {
+        return a.calculate(b, mathOperation);
     }
 
 

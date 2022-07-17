@@ -1,40 +1,23 @@
-import exceptions.DigitNotSupportedException;
-
-public enum RomanDigits implements Digit {
-    I(1, "I"),
-    II(2, "II"),
-    III(3, "II"),
-    IV(4, "IV"),
-    V(5, "V"),
-    VI(6, "VI"),
-    VII(7, "VII"),
-    VIII(8, "VIII"),
-    IX(9, "IX"),
-    X(10, "X");
+public enum RomanDigits {
+    I(1),
+    II(2),
+    III(3),
+    IV(4),
+    V(5),
+    VI(6),
+    VII(7),
+    VIII(8),
+    IX(9),
+    X(10);
 
     public int arabicValue;
-    public String glyph;
 
-    RomanDigits(int arabicValue, String glyph) {
+
+    RomanDigits(int arabicValue) {
         this.arabicValue = arabicValue;
-        this.glyph = glyph;
     }
 
-    public static Digit toDigit(String glyph) throws DigitNotSupportedException {
-        for (RomanDigits digit :
-                RomanDigits.values()) {
-            if (glyph.equals(
-                    digit.glyph
-            ))
-                return digit;
-        }
-        throw new DigitNotSupportedException("Число '" + glyph + "' - не поддерживается программой.");
-    }
 
-    @Override
-    public int toInt() {
-        return this.arabicValue;
-    }
 }
 
 

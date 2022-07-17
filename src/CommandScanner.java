@@ -22,19 +22,19 @@ public class CommandScanner {
         String aString = operands[0];
         String bString = operands[2];
 
-        Digit a;
-        Digit b;
+        Number a;
+        Number b;
 
         try {
-            a = new ArabicDigit(aString);
-            b = new ArabicDigit(bString);
+            a = new ArabicNumber(aString);
+            b = new ArabicNumber(bString);
         } catch (DigitNotSupportedException e) {
             throw new IllegalCommandException("Операнды команды не поддерживаются", e);
         } catch (NumberFormatException e) {
             try {
-                a = RomanDigits.toDigit(aString);
-                b = RomanDigits.toDigit(aString);
-            } catch (DigitNotSupportedException exception) {
+                a = new RomanNumber(aString);
+                b = new RomanNumber(bString);
+            } catch (IllegalArgumentException | DigitNotSupportedException exception) {
                 throw new IllegalCommandException("Операнды команды не поддерживаются", e);
             }
         }
